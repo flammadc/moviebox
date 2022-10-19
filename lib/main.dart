@@ -43,10 +43,14 @@ class _myAppState extends State<MyApp> {
               SizedBox(
                 height: 12,
               ),
-              SingleChildScrollView(
+              Expanded(
+                child: ListView.builder(
+                  shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
-                  child: Row(children: <Widget>[
-                    Column(
+                  itemCount: 5,
+                  itemBuilder: (BuildContext context, int index) => Container(
+                    margin: EdgeInsets.fromLTRB(0, 0, 6, 0),
+                    child: Column(
                       children: [
                         SizedBox(
                           width: 200,
@@ -57,57 +61,20 @@ class _myAppState extends State<MyApp> {
                           height: 8,
                         ),
                         Text(
-                          "Black Widow",
+                          '${movies.map((m) => m["title"])}',
                           style: TextStyle(fontSize: 14),
                         ),
                       ],
                     ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Column(
-                      children: [
-                        SizedBox(
-                          width: 200,
-                          child: Image.network(
-                              "https://lumiere-a.akamaihd.net/v1/images/p_blackwidow_21043_v2_6d1b73b8.jpeg"),
-                        ),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        Text(
-                          "Black Widow",
-                          style: TextStyle(fontSize: 14),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Column(
-                      children: [
-                        SizedBox(
-                          width: 200,
-                          child: Image.network(
-                              "https://lumiere-a.akamaihd.net/v1/images/p_blackwidow_21043_v2_6d1b73b8.jpeg"),
-                        ),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        Text(
-                          "Black Widow",
-                          style: TextStyle(fontSize: 14),
-                        ),
-                      ],
-                    ),
-                  ]))
+                  ),
+                ),
+              ),
             ],
           ),
         ),
         // bottomNavigationBar: BottomNavigationBar(
         //   items: [
-        //     BottomNavigationBarItem(
-        //         icon: Icon(Icons.home), label: Text("Home")),
+        //     BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
         //   ],
         // ),
       ),
